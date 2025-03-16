@@ -1,0 +1,51 @@
+Table users {
+    id bigint [primary key]
+    name varchar
+    email varchar [unique]
+    created_at datetime
+    updated_at datetime
+    project_id bigint [ref: > projects.id] // One user belongs to one project
+    team_id bigint [ref: > teams.id]       // One user belongs to one team
+}
+
+Table projects {
+    id bigint [primary key]
+    name varchar [unique]
+    description varchar
+}
+
+Table teams {
+    id bigint [primary key]
+    name varchar [unique]
+    description varchar
+}
+
+Table tasks {
+    id bigint [primary key]
+    title varchar [unique]
+    description varchar
+    due_date datetime
+    created_at datetime
+    updated_at datetime
+    project_id bigint [ref: > projects.id] // A task belongs to one project
+    team_id bigint [ref: > teams.id]       // A task belongs to one team
+    user_id bigint [ref: > users.id]       // A task is assigned to one user
+}
+
+Table comments {
+    id bigint [primary key]
+    content text
+    created_at datetime
+    task_id bigint [ref: > tasks.id]       // A comment is linked to a task
+    user_id bigint [ref: > users.id]       // A comment is linked to a user
+}
+
+Table task_status_map {
+    task_id bigint [ref: > tasks.id]
+    status varchar
+}
+
+Table task_priority_map {
+    task_id bigint [ref: > tasks.id]
+    priority varchar
+}
