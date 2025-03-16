@@ -39,7 +39,7 @@ public class TaskDto {
     @Future(message = "Task should have due date in future")
     private LocalDate dueDate;
 
-    @JsonFormat(pattern = "hh:mm:ss dd:MM:yyyy")
+    @JsonFormat(pattern = "hh:mm:ss dd-MM-yyyy")
     private LocalDateTime createdAt;
 
     @JsonFormat(pattern = "hh:mm:ss dd:MM:yyyy")

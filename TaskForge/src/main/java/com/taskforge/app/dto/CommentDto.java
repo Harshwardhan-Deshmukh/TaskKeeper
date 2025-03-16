@@ -22,6 +22,6 @@ public class CommentDto {
     @Max(value = 150, message = "Maximum 150 characters are allowed in Comment content.")
     private String content;
 
-    @JsonFormat(pattern = "hh:mm:ss dd:MM:yyyy")
+    @JsonFormat(pattern = "hh:mm:ss dd-MM-yyyy")
     private LocalDateTime createdAt;
 }

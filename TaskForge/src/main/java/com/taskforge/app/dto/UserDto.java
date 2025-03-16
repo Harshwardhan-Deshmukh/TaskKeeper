@@ -30,10 +30,10 @@ public class UserDto {
     @RoleChecker(message = "Invalid priority. Allowed values are [PLATFORM, DEVELOPER, TESTER, LEADERSHIP]")
     private Role role;
 
-    @JsonFormat(pattern = "hh:mm:ss dd:MM:yyyy")
+    @JsonFormat(pattern = "hh:mm:ss dd-MM-yyyy")
     private LocalDateTime createdAt;
 
-    @JsonFormat(pattern = "hh:mm:ss dd:MM:yyyy")
+    @JsonFormat(pattern = "hh:mm:ss dd-MM-yyyy")
     private LocalDateTime updatedAt;
 
 }
