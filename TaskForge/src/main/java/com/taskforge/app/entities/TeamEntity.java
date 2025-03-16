@@ -24,10 +24,10 @@ public class TeamEntity {
     private String name;
     private String description;
 
-    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<TaskEntity> tasks;
 
-    @OneToMany(mappedBy = "team")
+    @OneToMany(mappedBy = "team", fetch = FetchType.LAZY)
     private List<UserEntity> users;
 
     @Override

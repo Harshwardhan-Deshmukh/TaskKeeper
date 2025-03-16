@@ -24,9 +24,11 @@ public class ProjectEntity {
     private String name;
     private String description;
 
-    @OneToMany(mappedBy = "project")
+    @OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
     private List<UserEntity> users;
 
-    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
+    // when a project is persisted, updated or deleted, all the associated tasks entities should also be
+    // persisted, updated or deleted
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<TaskEntity> tasks;
 }

@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -37,11 +36,4 @@ public class UserDto {
     @JsonFormat(pattern = "hh:mm:ss dd:MM:yyyy")
     private LocalDateTime updatedAt;
 
-    private List<CommentDto> comments;
-
-    private ProjectDto project;
-
-    private TeamDto team;
-
-    private List<TaskDto> tasks;
 }

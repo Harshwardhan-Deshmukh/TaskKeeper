@@ -7,8 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -23,7 +21,4 @@ public class TeamDto {
     @Max(value = 150, message = "Maximum of 150 characters allowed in Team description.")
     private String description;
 
-    private List<TaskDto> tasks;
-
-    private List<UserDto> users;
 }

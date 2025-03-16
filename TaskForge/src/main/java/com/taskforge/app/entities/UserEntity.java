@@ -29,7 +29,7 @@ public class UserEntity {
     private String email;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "roles")
+    @Column(name = "role")
     private Role role;
 
     @CreationTimestamp
@@ -38,18 +38,18 @@ public class UserEntity {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<CommentEntity> comments;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id", referencedColumnName = "id")
     private ProjectEntity project;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id", referencedColumnName = "id")
     private TeamEntity team;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<TaskEntity> tasks;
 
     @Override

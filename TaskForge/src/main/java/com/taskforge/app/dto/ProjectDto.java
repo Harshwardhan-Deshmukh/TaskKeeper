@@ -7,8 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -23,7 +21,4 @@ public class ProjectDto {
     @Max(value = 150, message = "Maximum 150 characters are allowed in Project description.")
     private String description;
 
-    private List<UserDto> users;
-
-    private List<TaskDto> tasks;
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 @RestControllerAdvice
-public class GlobalResponseHandler implements ResponseBodyAdvice<ApiResponse<?>>{
+public class GlobalResponseHandler implements ResponseBodyAdvice<Object>{
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
         // Skips the swagger ui response from wrapping
@@ -20,7 +20,10 @@ public class GlobalResponseHandler implements ResponseBodyAdvice<ApiResponse<?>>
     }
 
     @Override
-    public ApiResponse<?> beforeBodyWrite(ApiResponse<?> body, MethodParameter returnType, MediaType selectedContentType, Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
+    public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
+        if (body instanceof ApiResponse<?>) {
+            return body;
+        }
         return new ApiResponse<>(body);
     }
 }

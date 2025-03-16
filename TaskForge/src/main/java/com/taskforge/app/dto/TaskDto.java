@@ -3,10 +3,6 @@ package com.taskforge.app.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.taskforge.app.annotations.PriorityChecker;
 import com.taskforge.app.annotations.StatusChecker;
-import com.taskforge.app.entities.CommentEntity;
-import com.taskforge.app.entities.ProjectEntity;
-import com.taskforge.app.entities.TeamEntity;
-import com.taskforge.app.entities.UserEntity;
 import com.taskforge.app.enums.Priority;
 import com.taskforge.app.enums.Status;
 import jakarta.validation.constraints.Future;
@@ -19,7 +15,6 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -50,11 +45,4 @@ public class TaskDto {
     @JsonFormat(pattern = "hh:mm:ss dd:MM:yyyy")
     private LocalDateTime updatedAt;
 
-    private List<CommentEntity> comments;
-
-    private ProjectEntity project;
-
-    private TeamEntity team;
-
-    private UserEntity user;
 }

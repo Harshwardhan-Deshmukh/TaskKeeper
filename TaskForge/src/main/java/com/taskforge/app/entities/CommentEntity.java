@@ -24,11 +24,11 @@ public class CommentEntity {
     @CreationTimestamp
     private LocalDateTime createdAt;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "task_id")
     private TaskEntity task;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private UserEntity user;
 

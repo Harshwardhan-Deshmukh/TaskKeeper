@@ -24,8 +24,4 @@ public class CommentDto {
 
     @JsonFormat(pattern = "hh:mm:ss dd:MM:yyyy")
     private LocalDateTime createdAt;
-
-    private TaskDto task;
-    private UserDto user;
-
 }

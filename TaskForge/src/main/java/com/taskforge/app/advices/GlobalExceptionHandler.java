@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.util.List;
 
@@ -44,6 +45,18 @@ public class GlobalExceptionHandler extends LoggerUtil {
         return getResponseEntityObject(apiError);
     }
 
+    @ExceptionHandler(NoResourceFoundException.class)
+    public ResponseEntity<ApiResponse<?>> handleNoResourceNotFoundException(NoResourceFoundException exception) {
+        ApiError apiError = ApiError.builder()
+                .message("INVALID_ENDPOINT")
+                .errors(List.of(exception.getMessage()))
+                .status(HttpStatus.NOT_FOUND)
+                .build();
+
+        logger.error("Client requested for invalid resource endpoint.");
+        return getResponseEntityObject(apiError);
+    }
+
     @ExceptionHandler(ResourceNotFound.class)
     public ResponseEntity<ApiResponse<?>> handleResourceNotFoundException(ResourceNotFound exception) {
         ApiError apiError = ApiError.builder()
@@ -57,9 +70,7 @@ public class GlobalExceptionHandler extends LoggerUtil {
     }
 
     private ResponseEntity<ApiResponse<?>> getResponseEntityObject(ApiError apiError) {
-        return new ResponseEntity<>(ApiResponse.builder()
-                .error(apiError)
-                .build(),
-                apiError.getStatus());
+        ApiResponse<ApiError> response = new ApiResponse<>(apiError);
+        return new ResponseEntity<>(response, apiError.getStatus());
     }
 }
