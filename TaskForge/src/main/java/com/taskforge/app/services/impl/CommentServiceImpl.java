@@ -4,6 +4,8 @@ import com.taskforge.app.exceptions.ResourceNotFound;
 import com.taskforge.app.repositories.CommentRepository;
 import com.taskforge.app.services.CommentService;
 import com.taskforge.app.utils.LoggerUtil;
+
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;

@@ -4,11 +4,13 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
 @Entity
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(
@@ -26,7 +28,7 @@ public class ProjectEntity {
 
     @OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
     private List<UserEntity> users;
-
+    
     // when a project is persisted, updated or deleted, all the associated tasks entities should also be
     // persisted, updated or deleted
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)

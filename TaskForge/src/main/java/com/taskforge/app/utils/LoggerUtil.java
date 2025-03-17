@@ -5,5 +5,9 @@ import org.slf4j.LoggerFactory;
 
 public abstract class LoggerUtil {
     protected final Logger logger = LoggerFactory.getLogger(getClass());
+    
+    public LoggerUtil() {
+    	logger.trace("GENERATING A LOGGER INSTANCE");
+    }
 }
 

@@ -6,12 +6,12 @@ import com.taskforge.app.annotations.StatusChecker;
 import com.taskforge.app.enums.Priority;
 import com.taskforge.app.enums.Status;
 import jakarta.validation.constraints.Future;
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -27,7 +27,7 @@ public class TaskDto {
     @NotBlank(message = "title is a required field for Task")
     private String title;
 
-    @Max(value = 150, message = "Maximum 150 characters are allowed in Task description.")
+    @Length(max = 250, message = "Maximum 250 characters are allowed in Task description.")
     private String description;
 
     @StatusChecker(message = "Invalid status. Allowed values are [TODO, IN_PROGRESS, DONE, BLOCKED]")

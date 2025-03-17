@@ -1,11 +1,11 @@
 package com.taskforge.app.dto;
 
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,7 +18,7 @@ public class TeamDto {
     @NotBlank(message = "name is a required field for Team")
     private String name;
 
-    @Max(value = 150, message = "Maximum of 150 characters allowed in Team description.")
+    @Length(max = 250, message = "Maximum of 250 characters allowed in Team description.")
     private String description;
 
 }

@@ -8,5 +8,7 @@ public interface ProjectService {
 
     List<ProjectDto> getAllProjects(Byte pageNumber, String sortBy);
     ProjectDto getProjectById(Long projectId);
+	ProjectDto createProject(ProjectDto projectDto);
+	Boolean deleteById(Long projectId);
 
 }

@@ -64,7 +64,7 @@ public class GlobalExceptionHandler extends LoggerUtil {
                 .errors(List.of(exception.getMessage()))
                 .status(HttpStatus.NOT_FOUND)
                 .build();
-
+       
         logger.error("Resource Not Found. Client is requesting data for id that does not exists.");
         return getResponseEntityObject(apiError);
     }
