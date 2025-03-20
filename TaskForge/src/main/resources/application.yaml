@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: TaskForge
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/taskforge?useSSL=false&PublicKeyRetrieval=false
+    username: 
+    password: 
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    # defer-datasource-initialization: true     # UNCOMMENT this LINES IF YOU WANT TO POPULATE YOUR DATABASE STARTER DATA
+
+  devtools:
+    restart:
+      exclude: static/**
+      enabled: false
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://sts.windows.net/${tenant_id}/
+          audience: api://${backend_app_clientId}
+  # cloud:
+  #   azure:
+  #     active-directory:
+  #       enabled: true
+  #       profile:
+  #         tenant-id: ${tenant_id}
+  #       credential:
+  #         client-id: ${client_id}
+  #         client-secret: ${client_secret}   
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+  
+  # UNCOMMENT this LINES IF YOU WANT TO POPULATE YOUR DATABASE STARTER DATA   
+  # sql:
+  #   init:
+  #     mode: always
+  #     data-locations: classpath:data.sql    
+
+server:
+  forward-headers-strategy: native
+  servlet:
+    context-path: /taskforge/api
+
+  

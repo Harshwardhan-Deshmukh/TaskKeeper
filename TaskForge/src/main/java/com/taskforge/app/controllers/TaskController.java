@@ -11,6 +11,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -24,6 +25,7 @@ public class TaskController extends LoggerUtil {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('Admin')")
     public ResponseEntity<List<TaskDto>> getAllTasks (
             @RequestParam(name = "page", required = false, defaultValue = "0") Byte pageNumber
             )
@@ -66,6 +68,7 @@ public class TaskController extends LoggerUtil {
     }
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ROLE_Admin')")
     public ResponseEntity<TaskDto> createTask(@RequestBody @Valid TaskDto taskDto) {
     	logger.info("Client requested to save a Task: {}", taskDto.getTitle());
     	TaskDto savedTaskDto = taskService.createTask(taskDto);
