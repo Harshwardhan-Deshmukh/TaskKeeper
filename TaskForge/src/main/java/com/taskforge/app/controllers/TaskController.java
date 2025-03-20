@@ -25,7 +25,6 @@ public class TaskController extends LoggerUtil {
     }
 
     @GetMapping
-    @PreAuthorize("hasAuthority('Admin')")
     public ResponseEntity<List<TaskDto>> getAllTasks (
             @RequestParam(name = "page", required = false, defaultValue = "0") Byte pageNumber
             )
